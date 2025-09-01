@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coffee Machine</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+        h1 { color: #5c3d2e; }
+        ul { list-style: none; padding: 0; }
+        li { background: #fff; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        a { text-decoration: none; color: #007BFF; }
+        .flash { background: #ffeeba; padding: 10px; margin-bottom: 20px; border-left: 5px solid #f0ad4e; }
+    </style>
+</head>
+<body>
+    <h1>☕ Welcome to The Coffee Machine</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+        {% for msg in messages %}
+          <p>{{ msg }}</p>
+        {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <ul>
+        {% for item in items %}
+            <li>
+                <strong>{{ item.name.title() }}</strong> — ₹{{ item.cost }}<br>
+                <a href="{{ url_for('order', drink_name=item.name) }}">Order Now</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><a href="{{ url_for('report') }}">📊 View Machine Report</a></p>
+</body>
+</html>

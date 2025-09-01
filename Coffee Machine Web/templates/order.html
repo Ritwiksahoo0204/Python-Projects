@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order {{ drink.name }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #fafafa; padding: 20px; }
+        form { background: #fff; padding: 20px; border-radius: 8px; width: 300px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        label { display: block; margin-bottom: 10px; }
+        input { width: 100%; padding: 6px; margin-top: 4px; margin-bottom: 12px; }
+        button { padding: 10px 15px; background: #5c3d2e; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        a { display: inline-block; margin-top: 20px; color: #007BFF; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h2>Ordering: {{ drink.name.title() }}</h2>
+    <p>💰 Cost: ₹{{ drink.cost }}</p>
+    <form method="POST">
+        <label>One Rupee: <input type="number" name="one" min="0"></label>
+        <label>Two Rupees: <input type="number" name="two" min="0"></label>
+        <label>Five Rupees: <input type="number" name="five" min="0"></label>
+        <label>Ten Rupees: <input type="number" name="ten" min="0"></label>
+        <label>Twenty Rupees: <input type="number" name="twenty" min="0"></label>
+        <button type="submit">Pay</button>
+    </form>
+    <a href="{{ url_for('home') }}">← Back to Home</a>
+</body>
+</html>
